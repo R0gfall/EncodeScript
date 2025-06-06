@@ -1,4 +1,6 @@
 import urllib.parse 
+import argparse
+
 
 # По сути можно сделать два варианта, первый берет на вход только одно слово и его кодирует в список
 # Второй вариант - можно передать какой нибудь флаг и бахнуть словарь == ЕГО ПОЗЖЕ реализую
@@ -59,11 +61,22 @@ def encode_word_to_url(word: str):
     # print(encoded)
     # print()
 
-
+def main():
+    parser = argparse.ArgumentParser(
+        prog='encodeURL',
+        description='Script create dict with url obfuscation',
+        epilog='Write path url'
+        )
     
+    parser.add_argument('-u', type=str, help='Enter your string, url')
+    args = parser.parse_args()
+
+    encode_word_to_url(args.u)
 
 
 if __name__ == "__main__":
+    
+    
     print("Start encode")
 
-    encode_word_to_url("../../Hello")
+    main()
