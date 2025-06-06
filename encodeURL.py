@@ -36,7 +36,10 @@ def encode_word_to_url(word: str):
 
         for i in range(5):
             encoded = urllib.parse.quote(encoded, safe='')
+            encoded = "%2e".join(encoded.split(".."))
+            
             file_output.write(f"{encoded}\n")
+
 
 
 
