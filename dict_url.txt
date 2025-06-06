@@ -17,3 +17,5 @@
 ..%5c..%5cHello
 ..%c0%5c..%c0%5cHello
 ..%ef%bc%bc..%ef%bc%bcHello
+....//....//Hello
+..\/..\/Hello
