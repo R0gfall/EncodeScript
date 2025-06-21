@@ -13,10 +13,20 @@ def encode_value_to_url(value: str):
         for i in range(4):
             temp = full_url_encode(temp)
             file_output.write(f"{temp}\n")
+        numbers_url_encode(value, 5, file_output)    
 
 
 def full_url_encode(s):
     return ''.join(['%{:02x}'.format(ord(c)) for c in s])
+
+
+
+def numbers_url_encode(s, number, f):
+    once = full_url_encode(s)
+    twice = once
+    for i in range(number - 1):
+        twice = twice.replace('%', '%25')
+        f.write(f"{twice}\n")
 
 
 def encode_word_to_url(word: str):
