@@ -5,6 +5,20 @@ import argparse
 # По сути можно сделать два варианта, первый берет на вход только одно слово и его кодирует в список
 # Второй вариант - можно передать какой нибудь флаг и бахнуть словарь == ЕГО ПОЗЖЕ реализую
 
+
+def encode_value_to_url(value: str):
+
+    with open("dict_url.txt", "w") as file_output:
+        temp = value
+        for i in range(4):
+            temp = full_url_encode(temp)
+            file_output.write(f"{temp}\n")
+
+
+def full_url_encode(s):
+    return ''.join(['%{:02x}'.format(ord(c)) for c in s])
+
+
 def encode_word_to_url(word: str):
     
     payload = '..'
@@ -69,9 +83,14 @@ def main():
         )
     
     parser.add_argument('-u', type=str, help='Enter your string, url')
+    parser.add_argument('-v', type=str, help='Enter your value')
     args = parser.parse_args()
 
-    encode_word_to_url(args.u)
+    if (args.u):
+        encode_word_to_url(args.u)
+    
+    else: 
+        encode_value_to_url(args.v)
 
 
 if __name__ == "__main__":
